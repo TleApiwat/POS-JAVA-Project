@@ -12,9 +12,7 @@ public class Restaurant {
 
 	
 	
-	
-	
-	
+
 	
 	/**
 	 * Launch the application.
