@@ -1,13 +1,20 @@
 package PosRestaurant;
 
 import java.util.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Order {
 	private int orderId;
 	private Map<Integer, String> items = new HashMap<>();
+	private Map<String, String> itemsDate = new HashMap<>();
 	private double totalAmount;
 	private String orederStatus;
-	private Date orderDate;
+	private String Orderdate;
+	
+	LocalDateTime now = LocalDateTime.now();
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+    String formattedDate = now.format(formatter);
 	
 	public int getOrderId() {return orderId;}
 
@@ -25,10 +32,6 @@ public class Order {
 
 	public void setOrederStatus(String orederStatus) {this.orederStatus = orederStatus;}
 	
-	public Date getOrderDate() {return orderDate;}
-
-	public void setOrderDate(Date orderDate) {this.orderDate = orderDate;}
-
 	public void addItem(String items){
 		
 	} 
