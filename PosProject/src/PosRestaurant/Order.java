@@ -154,6 +154,36 @@ public class Order {
             return false;
         }
     
+}public static boolean setItems(int orderId, int customerId, String orderDate, String status, double total) {
+    String sql = "UPDATE orders SET customer_id = ?, order_date = ?, status = ?, total = ? WHERE order_id = ?";
+    int rowsAffected = 0;
+    
+    try (Connection conn = DriverManager.getConnection(dbPath);
+         PreparedStatement stmt = conn.prepareStatement(sql)) {
+         
+        // Set parameters for the update
+        stmt.setInt(1, customerId);
+        stmt.setString(2, orderDate);
+        stmt.setString(3, status);
+        stmt.setDouble(4, total);
+        stmt.setInt(5, orderId);
+        
+        // Execute the update operation
+        rowsAffected = stmt.executeUpdate();
+        
+        if (rowsAffected > 0) {
+            System.out.println("Order #" + orderId + " updated successfully");
+            return true;
+        } else {
+            System.out.println("No order found with ID: " + orderId);
+            return false;
+        }
+        
+    } catch (SQLException e) {
+        System.out.println("Error updating order: " + e.getMessage());
+        e.printStackTrace();
+        return false;
+    }
 }
 
 }
