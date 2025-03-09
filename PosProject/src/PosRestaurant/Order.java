@@ -127,6 +127,33 @@ public class Order {
         }
         
         return null; // Order not found
-    }
+    }public static boolean removeItems(int orderId) {
+        String sql = "DELETE FROM orders WHERE order_id = ?";
+        int rowsAffected = 0;
+        
+        try (Connection conn = DriverManager.getConnection(dbPath);
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            
+            // Set the order ID parameter
+            stmt.setInt(1, orderId);
+            
+            // Execute the delete operation
+            rowsAffected = stmt.executeUpdate();
+            
+            if (rowsAffected > 0) {
+                System.out.println("Order #" + orderId + " removed successfully");
+                return true;
+            } else {
+                System.out.println("No order found with ID: " + orderId);
+                return false;
+            }
+            
+        } catch (SQLException e) {
+            System.out.println("Error removing order: " + e.getMessage());
+            e.printStackTrace();
+            return false;
+        }
+    
 }
 
+}
