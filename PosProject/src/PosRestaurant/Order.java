@@ -11,7 +11,7 @@ public class Order {
 	private Map<Integer, String> items = new HashMap<>();
 	private Map<String, String> itemsDate = new HashMap<>();
 	private double totalAmount;
-	private String orederStatus;
+	private String orderStatus;
 	private String Orderdate;
 	 private static final String URL = "jdbc:mysql://localhost:3306/your_database_name";
 	    private static final String USER = "your_username";
@@ -34,9 +34,9 @@ public class Order {
 
 	public void setTotalAmount(double totalAmount) {this.totalAmount = totalAmount;}
 
-	public String getOrederStatus() {return orederStatus;}
+	public String getOrderStatus() {return orderStatus;}
 
-	public void setOrederStatus(String orederStatus) {this.orederStatus = orederStatus;}
+	public void setOrederStatus(String orderStatus) {this.orderStatus = orderStatus;}
 	
 	
 	
